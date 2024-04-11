@@ -28,14 +28,14 @@ Feature: Helper services autowire
       <?php use Psr\Container\ContainerInterface;
 
       class Service1 {public $state;}
-      class Service2 {public $state;}
+      class Service2 {public $state; public $myFlag;}
       class Service3 {public $state;}
       class Service4 {public $state;}
 
       class ServiceContainer implements ContainerInterface {
           private $services = array();
 
-          public function has($class) {
+          public function has($class): bool {
               return in_array($class, array('Service1', 'Service2', 'Service3'));
           }
 
